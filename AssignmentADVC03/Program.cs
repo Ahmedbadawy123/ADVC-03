@@ -8,34 +8,78 @@
 
             // Create a program that manages student grades using One Of Collections
 
-            List<int> grades = new List<int> { 85, 92, 78, 95, 88, 70, 100, 65 };
+            //List<int> grades = new List<int> { 85, 92, 78, 95, 88, 70, 100, 65 };
 
-            Console.WriteLine("All Grades: " + string.Join(", ", grades));
-            Console.WriteLine($"Count: {grades.Count}");
-            Console.WriteLine($"First Grade: {grades[0]}");
-            Console.WriteLine($"Last Grade: {grades[grades.Count - 1]}");
+            //Console.WriteLine("All Grades: " + string.Join(", ", grades));
+            //Console.WriteLine($"Count: {grades.Count}");
+            //Console.WriteLine($"First Grade: {grades[0]}");
+            //Console.WriteLine($"Last Grade: {grades[grades.Count - 1]}");
 
-            grades.Sort();
-            Console.WriteLine("Sorted Grades (Ascending): " + string.Join(", ", grades));
+            //grades.Sort();
+            //Console.WriteLine("Sorted Grades (Ascending): " + string.Join(", ", grades));
 
-            int firstAbove90 = grades.Find(g => g > 90);
-            Console.WriteLine($"First grade above 90: {firstAbove90}");
+            //int firstAbove90 = grades.Find(g => g > 90);
+            //Console.WriteLine($"First grade above 90: {firstAbove90}");
 
-            List<int> failingGrades = grades.FindAll(g => g < 75);
-            Console.WriteLine("Failing grades (< 75): " + string.Join(", ", failingGrades));
+            //List<int> failingGrades = grades.FindAll(g => g < 75);
+            //Console.WriteLine("Failing grades (< 75): " + string.Join(", ", failingGrades));
 
-            grades.RemoveAll(g => g < 75);
-            Console.WriteLine("Grades after removing failing: " + string.Join(", ", grades));
+            //grades.RemoveAll(g => g < 75);
+            //Console.WriteLine("Grades after removing failing: " + string.Join(", ", grades));
 
-            bool has100 = grades.Contains(100);
-            Console.WriteLine($"Contains 100: {has100}");
+            //bool has100 = grades.Contains(100);
+            //Console.WriteLine($"Contains 100: {has100}");
 
-            List<string> formattedGrades = grades.ConvertAll(g => $"Grade: {g}");
-            Console.WriteLine("Formatted Grades: " + string.Join(" | ", formattedGrades));
+            //List<string> formattedGrades = grades.ConvertAll(g => $"Grade: {g}");
+            //Console.WriteLine("Formatted Grades: " + string.Join(" | ", formattedGrades));
 
 
             #endregion
 
+            #region Exercise 2: Leaderboard
+
+            // Create a leaderboard that automatically sorts players by score.
+
+            SortedDictionary<int, string> leaderboard = new SortedDictionary<int, string>()
+            {
+                { 500, "Ahmed"},
+                { 200, "Sara" },
+                { 800, "Ali" },
+                { 350, "Mona" }
+            };
+
+            Console.WriteLine("The Leaderboard:");
+            foreach (var board in leaderboard)
+            {
+                Console.WriteLine($"Score: {board.Key} -> Player: {board.Value}");
+            }
+
+            int firstKey = leaderboard.Keys.First();
+            string firstValue = leaderboard.Values.First();
+            Console.WriteLine($"First Key: {firstKey}, First Value: {firstValue}");
+
+            bool score500Exists = leaderboard.ContainsKey(500);
+            Console.WriteLine($"Score 500 exists: {score500Exists}");
+
+            if (leaderboard.TryGetValue(999, out string player999))
+            {
+                Console.WriteLine($"Player with score 999: {player999}");
+            }
+            else
+            {
+                Console.WriteLine("Score 999 not found safely.");
+            }
+
+            leaderboard.Remove(200);
+            Console.WriteLine("\n Leaderboard after removing score 200 ");
+            foreach (var board in leaderboard)
+            {
+                Console.WriteLine($"Score: {board.Key} -> Player: {board.Value}");
+            }
+
+            // Helping With Ai and I Understand The Code.
+
+            #endregion
         }
     }
 }
