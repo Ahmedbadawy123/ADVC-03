@@ -40,44 +40,89 @@
 
             // Create a leaderboard that automatically sorts players by score.
 
-            SortedDictionary<int, string> leaderboard = new SortedDictionary<int, string>()
-            {
-                { 500, "Ahmed"},
-                { 200, "Sara" },
-                { 800, "Ali" },
-                { 350, "Mona" }
-            };
+            //SortedDictionary<int, string> leaderboard = new SortedDictionary<int, string>()
+            //{
+            //    { 500, "Ahmed"},
+            //    { 200, "Sara" },
+            //    { 800, "Ali" },
+            //    { 350, "Mona" }
+            //};
 
-            Console.WriteLine("The Leaderboard:");
-            foreach (var board in leaderboard)
+            //Console.WriteLine("The Leaderboard:");
+            //foreach (var board in leaderboard)
+            //{
+            //    Console.WriteLine($"Score: {board.Key} -> Player: {board.Value}");
+            //}
+
+            //int firstKey = leaderboard.Keys.First();
+            //string firstValue = leaderboard.Values.First();
+            //Console.WriteLine($"First Key: {firstKey}, First Value: {firstValue}");
+
+            //bool score500Exists = leaderboard.ContainsKey(500);
+            //Console.WriteLine($"Score 500 exists: {score500Exists}");
+
+            //if (leaderboard.TryGetValue(999, out string player999))
+            //{
+            //    Console.WriteLine($"Player with score 999: {player999}");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Score 999 not found safely.");
+            //}
+
+            //leaderboard.Remove(200);
+            //Console.WriteLine("\n Leaderboard after removing score 200 ");
+            //foreach (var board in leaderboard)
+            //{
+            //    Console.WriteLine($"Score: {board.Key} -> Player: {board.Value}");
+            //}
+
+            // Helping With Ai and I Understand The Code.
+
+            #endregion
+
+            #region Exercise 3: Phone Book
+
+            // Build a phone book application.
+
+            Dictionary<string, string> phoneBook = new Dictionary<string, string>()
+        {
+            { "Ahmed", "01097496709" },
+            { "Haneen", "01024314047" },
+            { "Arwa", "01210122996" },
+            { "Yara", "01007096234" }
+        };
+            
+            phoneBook["Haneen"] = "01005125143";
+            phoneBook["Ahmed"] = "01099999999";
+
+            try
             {
-                Console.WriteLine($"Score: {board.Key} -> Player: {board.Value}");
+                phoneBook.Add("Sara", "01173627673"); 
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"[Caught Exception] Error adding duplicate: {ex.Message}");
             }
 
-            int firstKey = leaderboard.Keys.First();
-            string firstValue = leaderboard.Values.First();
-            Console.WriteLine($"First Key: {firstKey}, First Value: {firstValue}");
+            bool isAdded = phoneBook.TryAdd("Sara", "01100000000");
+            Console.WriteLine($"TryAdd duplicate 'Sara' result: {isAdded}");
 
-            bool score500Exists = leaderboard.ContainsKey(500);
-            Console.WriteLine($"Score 500 exists: {score500Exists}");
+            bool exists = phoneBook.ContainsKey("Khaled");
+            Console.WriteLine($"Contact 'Khaled' exists: {exists}");
 
-            if (leaderboard.TryGetValue(999, out string player999))
+            if (phoneBook.TryGetValue("Khaled", out string phoneNumber))
             {
-                Console.WriteLine($"Player with score 999: {player999}");
+                Console.WriteLine($"Phone: {phoneNumber}");
             }
             else
             {
-                Console.WriteLine("Score 999 not found safely.");
+                phoneNumber = "Not Found";
+                Console.WriteLine($"Khaled's contact: {phoneNumber}");
             }
 
-            leaderboard.Remove(200);
-            Console.WriteLine("\n Leaderboard after removing score 200 ");
-            foreach (var board in leaderboard)
-            {
-                Console.WriteLine($"Score: {board.Key} -> Player: {board.Value}");
-            }
-
-            // Helping With Ai and I Understand The Code.
+            Console.WriteLine("All Keys: " + string.Join(", ", phoneBook.Keys));
+            Console.WriteLine("All Values: " + string.Join(", ", phoneBook.Values));
 
             #endregion
         }
